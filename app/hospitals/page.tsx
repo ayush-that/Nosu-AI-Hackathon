@@ -97,7 +97,7 @@ export default function HospitalsPage() {
   }, [pincode]);
 
   const handleChatClick = (hospitalId: string) => {
-    router.push(`/`);
+    router.push(`/auth`);
   };
 
   if (!pincode) {
