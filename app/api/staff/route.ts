@@ -14,20 +14,25 @@ export async function POST(request: Request) {
     const {
       data: { user: userData },
       error: userError,
-    } = await supabase.auth.admin.getUserByEmail(email);
+    } = await supabase.auth.admin.listUsers({
+      filter: {
+        email: email,
+      },
+    });
 
-    if (userError || !userData) {
+    if (userError || !userData?.length) {
       console.error("Error finding user:", userError);
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    console.log("Found user:", userData.id);
+    const user = userData[0];
+    console.log("Found user:", user.id);
 
     // Add user to staff_members
     const { error: staffError } = await supabase.from("staff_members").insert([
       {
-        id: userData.id,
-        full_name: userData.user_metadata?.full_name,
+        id: user.id,
+        full_name: user.user_metadata?.full_name,
         role: "support",
       },
     ]);
@@ -46,7 +51,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       message: "Staff member added successfully",
-      userId: userData.id,
+      userId: user.id,
     });
   } catch (error) {
     console.error("API error:", error);
