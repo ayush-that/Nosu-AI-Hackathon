@@ -110,13 +110,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (error) throw error;
 
-      // Automatically sign in after signup
-      if (data.user) {
-        await signIn(email, password);
-      }
+      return { data, error: null };
     } catch (error) {
       console.error("Error signing up:", error);
-      throw error;
+      return {
+        data: null,
+        error:
+          error instanceof Error
+            ? error
+            : new Error("An error occurred during signup"),
+      };
     }
   }
 
