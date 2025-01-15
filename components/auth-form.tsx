@@ -39,12 +39,14 @@ export function AuthForm() {
 
     try {
       if (isSignUp) {
-        await signUp(email, password, name);
+        const { data, error } = await signUp(email, password, name);
+        if (error) throw error;
+
         toast({
           title: "Check your email",
           description:
-            "We sent you a confirmation link to verify your account.",
-          duration: 5000,
+            "We've sent you a verification link. Please verify your email to sign in.",
+          duration: 8000,
         });
         // Reset form after successful signup
         setEmail("");
@@ -53,12 +55,41 @@ export function AuthForm() {
         setIsSignUp(false);
       } else {
         await signIn(email, password);
+        toast({
+          title: "Welcome back!",
+          description: "You have been successfully signed in.",
+          duration: 3000,
+        });
       }
     } catch (error) {
       if (error instanceof Error) {
-        setError(error.message);
+        // Check if the error is about email confirmation
+        if (error.message.toLowerCase().includes("email confirmation")) {
+          toast({
+            title: "Check your email",
+            description: "Please check your email for the verification link.",
+            duration: 5000,
+          });
+          // Reset form and switch to sign in
+          setIsSignUp(false);
+          setPassword("");
+        } else {
+          setError(error.message);
+          toast({
+            title: "Error",
+            description: error.message,
+            variant: "destructive",
+            duration: 5000,
+          });
+        }
       } else {
         setError("An error occurred");
+        toast({
+          title: "Error",
+          description: "An unexpected error occurred",
+          variant: "destructive",
+          duration: 5000,
+        });
       }
     } finally {
       setLoading(false);

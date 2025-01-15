@@ -5,11 +5,20 @@ import { User } from "@supabase/supabase-js";
 import { supabase } from "./supabase";
 import { Profile } from "./supabase";
 
+type SignUpResponse = {
+  data: { user: User | null } | null;
+  error: Error | null;
+};
+
 type AuthContextType = {
   user: User | null;
   profile: Profile | null;
   signIn: (email: string, password: string) => Promise<void>;
-  signUp: (email: string, password: string, name: string) => Promise<void>;
+  signUp: (
+    email: string,
+    password: string,
+    name: string
+  ) => Promise<SignUpResponse>;
   signOut: () => Promise<void>;
   loading: boolean;
 };
@@ -96,28 +105,36 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
-  async function signUp(email: string, password: string, name: string) {
+  async function signUp(
+    email: string,
+    password: string,
+    name: string
+  ): Promise<SignUpResponse> {
     try {
-      const { data: authData, error: authError } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          data: {
+            full_name: name,
+          },
+        },
       });
 
-      if (authError) throw authError;
-
-      if (authData.user) {
-        const { error: profileError } = await supabase.from("profiles").upsert({
-          id: authData.user.id,
-          email: email,
-          full_name: name,
-          updated_at: new Date().toISOString(),
-        });
-
-        if (profileError) throw profileError;
+      if (error) {
+        return { data: null, error: error };
       }
+
+      return { data: { user: data.user }, error: null };
     } catch (error) {
       console.error("Error signing up:", error);
-      throw error;
+      return {
+        data: null,
+        error:
+          error instanceof Error
+            ? error
+            : new Error("An error occurred during signup"),
+      };
     }
   }
 
