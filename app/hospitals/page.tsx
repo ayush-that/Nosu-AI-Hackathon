@@ -66,13 +66,9 @@ function HospitalsContent() {
           return;
         }
 
-        const nearbyHospitals = await getHospitalsNearby(
-          coordinates.lat,
-          coordinates.lon
-        );
-        const formattedHospitals = formatHospitalData(
-          nearbyHospitals,
-          coordinates
+        const nearbyHospitals = await getHospitalsNearby(coordinates);
+        const formattedHospitals = nearbyHospitals.map((hospital) =>
+          formatHospitalData(hospital, coordinates.lat, coordinates.lon)
         );
         setHospitals(formattedHospitals);
       } catch (error) {
