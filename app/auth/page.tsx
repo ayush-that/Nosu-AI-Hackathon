@@ -344,18 +344,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col h-screen overflow-hidden">
-      <nav className="w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 h-14 flex items-center">
-        <div className="container flex max-w-3xl px-2 items-center mx-auto">
-          <div className="flex items-center gap-2 font-bold">
-            <Bot className="h-5 w-5" />
-            <span>AI Assistant</span>
-          </div>
-          <div className="flex flex-1 items-center justify-end space-x-2">
-            <ThemeToggle />
-          </div>
-        </div>
-      </nav>
-
       <main className="flex-1 container max-w-3xl mx-auto overflow-hidden">
         <ScrollArea className="h-[calc(100vh-7rem)] px-6">
           <div className="py-2 space-y-2">
