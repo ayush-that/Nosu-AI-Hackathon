@@ -3,7 +3,7 @@
 AI-powered healthcare platform that streamlines patient care with personalized insights, secure data management, and 24/7 support - making quality healthcare more accessible and efficient."
 
 
-![alt text](image.png)
+![Landing Page](image.png)
 
 ## Inspiration
 Let's face it - healthcare is broken. Doctors are overwhelmed, patients are frustrated with long wait times, and important health information gets lost in outdated systems. We built MediConnect because we believe everyone deserves better healthcare access. Our goal? Use modern technology to make healthcare work better for both patients and providers.

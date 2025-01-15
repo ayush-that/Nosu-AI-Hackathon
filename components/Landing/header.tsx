@@ -27,19 +27,19 @@ export default function Header() {
       items: [
         {
           title: "Find Hospitals",
-          href: "/hospitals",
+          href: "/soon",
         },
         {
           title: "AI Health Assistant",
-          href: "/ai-assistant",
+          href: "/soon",
         },
         {
           title: "Emergency Services",
-          href: "/emergency",
+          href: "/soon",
         },
         {
           title: "Book Appointment",
-          href: "/appointments",
+          href: "/soon",
         },
       ],
     },
@@ -49,19 +49,19 @@ export default function Header() {
       items: [
         {
           title: "Health Articles",
-          href: "/articles",
+          href: "/soon",
         },
         {
           title: "FAQs",
-          href: "/faqs",
+          href: "/soon",
         },
         {
           title: "Support",
-          href: "/support",
+          href: "/soon",
         },
         {
           title: "Contact",
-          href: "/contact",
+          href: "/soon",
         },
       ],
     },
