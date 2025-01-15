@@ -16,57 +16,56 @@ export function FeaturesSectionWithHoverEffects() {
       title: "AI-Powered Health Insights",
       description:
         "Personalized health recommendations and predictive analytics powered by advanced AI.",
-      icon: <IconAdjustmentsBolt />,
+      icon: <IconAdjustmentsBolt className="w-8 h-8" />,
+      color: "from-blue-500/20 to-blue-500/0",
     },
     {
       title: "User-Friendly Patient Portal",
       description:
         "Easy access to health records, appointments, and communication with providers.",
-      icon: <IconHelp />,
+      icon: <IconHelp className="w-8 h-8" />,
+      color: "from-purple-500/20 to-purple-500/0",
     },
     {
       title: "Cost-Effective Healthcare Solutions",
       description:
         "Optimize costs with efficient resource allocation and high-quality care.",
-      icon: <IconRouteAltLeft />,
+      icon: <IconRouteAltLeft className="w-8 h-8" />,
+      color: "from-green-500/20 to-green-500/0",
     },
     {
       title: "Reliable and Secure Platform",
       description:
         "High availability and robust security for sensitive patient data.",
-      icon: <IconCloud />,
+      icon: <IconCloud className="w-8 h-8" />,
+      color: "from-rose-500/20 to-rose-500/0",
     },
     {
       title: "Scalable for All Healthcare Needs",
       description:
         "Scales from small clinics to large hospitals, adapting to growing demands.",
-      icon: <IconCurrencyDollar />,
+      icon: <IconCurrencyDollar className="w-8 h-8" />,
+      color: "from-amber-500/20 to-amber-500/0",
     },
     {
       title: "24/7 Dedicated Support",
       description:
         "Round-the-clock support from healthcare professionals and AI assistance.",
-      icon: <IconEaseInOut />,
-    },
-    {
-      title: "Continuous Medical Learning",
-      description:
-        "AI models evolve with new research and data for evidence-based care.",
-      icon: <IconTerminal2 />,
-    },
-    {
-      title: "Community-Driven Care",
-      description:
-        "Collaborative care and knowledge sharing among providers and patients.",
-      icon: <IconHelp />,
+      icon: <IconEaseInOut className="w-8 h-8" />,
+      color: "from-indigo-500/20 to-indigo-500/0",
     },
   ];
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 relative z-10 py-10 max-w-7xl mx-auto px-4">
-      {features.map((feature, index) => (
-        <Feature key={feature.title} {...feature} index={index} />
-      ))}
-    </div>
+    <section className="py-16 sm:py-24 overflow-hidden">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {features.map((feature, index) => (
+            <Feature key={feature.title} {...feature} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -75,38 +74,68 @@ const Feature = ({
   description,
   icon,
   index,
+  color,
 }: {
   title: string;
   description: string;
   icon: React.ReactNode;
   index: number;
+  color: string;
 }) => {
   return (
     <div
       className={cn(
-        "flex flex-col lg:border-r  py-10 relative group/feature dark:border-neutral-800",
-        (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
-        index < 4 && "lg:border-b dark:border-neutral-800"
+        "group/feature relative rounded-2xl p-6 transition-all duration-300",
+        "hover:shadow-lg hover:-translate-y-1",
+        "bg-background/50 backdrop-blur-sm",
+        "border border-border/50",
+        "sm:p-8"
       )}
     >
-      {index < 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
-      )}
-      {index >= 4 && (
-        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
-      )}
-      <div className="mb-4 relative z-10 px-10 text-neutral-600 dark:text-neutral-400">
-        {icon}
+      {/* Gradient Background Effect */}
+      <div
+        className={cn(
+          "absolute inset-0 opacity-0 group-hover/feature:opacity-100",
+          "transition-opacity duration-300 rounded-2xl bg-gradient-to-b",
+          color
+        )}
+      />
+
+      {/* Icon Container */}
+      <div className="relative mb-4 sm:mb-6">
+        <div
+          className={cn(
+            "inline-flex items-center justify-center",
+            "p-3 rounded-xl bg-background/80",
+            "ring-1 ring-border/50 shadow-sm",
+            "transition-transform duration-300",
+            "group-hover/feature:scale-110"
+          )}
+        >
+          {icon}
+        </div>
       </div>
-      <div className="text-lg font-bold mb-2 relative z-10 px-10">
-        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-300 dark:bg-neutral-700 group-hover/feature:bg-blue-500 transition-all duration-200 origin-center" />
-        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-neutral-800 dark:text-neutral-100">
+
+      {/* Content */}
+      <div className="relative space-y-3">
+        <h3 className="text-lg font-semibold leading-tight tracking-tight sm:text-xl">
           {title}
-        </span>
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed sm:text-base">
+          {description}
+        </p>
       </div>
-      <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xs relative z-10 px-10">
-        {description}
-      </p>
+
+      {/* Hover Indicator */}
+      <div
+        className={cn(
+          "absolute left-0 top-8 h-12 w-1",
+          "opacity-0 group-hover/feature:opacity-100",
+          "transition-all duration-300",
+          "bg-gradient-to-b from-rose-500 to-rose-600",
+          "rounded-r-full"
+        )}
+      />
     </div>
   );
 };

@@ -1,163 +1,198 @@
 import React from "react";
-import { Heart, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { FaHeart, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaStethoscope, FaFirstAid, FaUser, FaCalendarAlt } from "react-icons/fa";
 import Link from "next/link";
 
 function Footer() {
   return (
-    <footer className="w-full bg-background/80 border-t border-muted/20 py-16">
-      {" "}
-      {/* Increased padding */}
-      <div className="container px-4 mx-auto">
-        {" "}
-        {/* Added a container for better content control */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {" "}
-          {/* Adjusted grid for better responsiveness */}
-          {/* Company Info Section */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-rose-600 flex items-center justify-center shadow-lg">
-                <Heart className="w-6 h-6 text-white" fill="white" />
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-rose-500 to-rose-600 bg-clip-text text-transparent">
-                MediConnect
-              </span>
+    <footer className="w-full bg-background/80 border-t border-muted/20">
+      {/* Emergency Banner */}
+      <div className="w-full bg-rose-500 py-2">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center text-white">
+            <div className="flex items-center gap-2">
+              <FaPhone className="h-4 w-4 animate-pulse" />
+              <span className="text-sm font-semibold">24/7 Emergency: 1-800-MED-HELP</span>
             </div>
-            <p className="text-sm text-muted-foreground mb-6">
-              Your trusted partner in healthcare. We provide innovative
-              solutions to connect patients with the care they need.
-            </p>
-            <div className="flex items-center gap-4">
-              <a href="#" className="text-muted-foreground hover:text-rose-500">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-rose-500">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-rose-500">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-rose-500">
-                <Linkedin className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
-          {/* Sitemap / Navigation */}
-          <div>
-            <h3 className="text-lg font-semibold text-foreground mb-4">
-              Explore
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/"
-                  className="text-sm text-muted-foreground hover:text-rose-500 block"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  className="text-sm text-muted-foreground hover:text-rose-500 block"
-                >
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/resources"
-                  className="text-sm text-muted-foreground hover:text-rose-500 block"
-                >
-                  Resources
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-sm text-muted-foreground hover:text-rose-500 block"
-                >
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
-          {/* Key Features / Highlights */}
-          <div>
-            <h3 className="text-lg font-semibold text-foreground mb-4">
-              Key Features
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/hospitals"
-                  className="text-sm text-muted-foreground hover:text-rose-500 block"
-                >
-                  Find Hospitals
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/ai-assistant"
-                  className="text-sm text-muted-foreground hover:text-rose-500 block"
-                >
-                  AI Health Assistant
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/appointments"
-                  className="text-sm text-muted-foreground hover:text-rose-500 block"
-                >
-                  Book Appointment
-                </Link>
-              </li>
-            </ul>
-          </div>
-          {/* Contact & Legal */}
-          <div>
-            <h3 className="text-lg font-semibold text-foreground mb-4">
-              Need Help?
-            </h3>
-            <ul className="space-y-2 mb-6">
-              <li className="text-sm text-muted-foreground">
-                Email:{" "}
-                <a
-                  href="mailto:support@mediconnect.com"
-                  className="hover:text-rose-500"
-                >
-                  support@mediconnect.com
-                </a>
-              </li>
-              <li className="text-sm text-muted-foreground">
-                Phone:{" "}
-                <a href="tel:+11234567890" className="hover:text-rose-500">
-                  +1 (123) 456-7890
-                </a>
-              </li>
-              {/* Removed Address for brevity, can be added back */}
-            </ul>
-            <div>
-              <Link
-                href="/terms"
-                className="text-xs text-muted-foreground hover:text-rose-500 mr-4"
-              >
-                Terms of Service
-              </Link>
-              <Link
-                href="/privacy"
-                className="text-xs text-muted-foreground hover:text-rose-500"
-              >
-                Privacy Policy
-              </Link>
-            </div>
+            <span className="text-sm hidden sm:block">Always Available for Your Care</span>
           </div>
         </div>
-        {/* Copyright Section */}
-        <div className="border-t border-muted/20 mt-12 pt-6 text-center">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} MediConnect. All rights reserved.
-          </p>
+      </div>
+
+      {/* Main Footer Content */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          {/* Brand Section */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500 to-rose-600 flex items-center justify-center shadow-lg">
+                <FaHeart className="w-7 h-7 text-white" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold bg-gradient-to-r from-rose-500 to-rose-600 bg-clip-text text-transparent">
+                  MediConnect
+                </span>
+                <span className="text-xs text-muted-foreground">Healthcare Excellence</span>
+              </div>
+            </div>
+            
+            <p className="text-sm text-muted-foreground">
+              Your trusted partner in healthcare, providing comprehensive medical services
+              with cutting-edge technology and compassionate care.
+            </p>
+
+            <div className="flex items-center gap-4">
+              <a href="#" className="text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                <FaFacebookF className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                <FaTwitter className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                <FaInstagram className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                <FaLinkedinIn className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Medical Services */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-2">
+              <FaStethoscope className="w-5 h-5 text-rose-500" />
+              <h3 className="text-lg font-semibold">Medical Services</h3>
+            </div>
+            <ul className="grid grid-cols-1 gap-3">
+              <li>
+                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                  Emergency Care
+                </Link>
+              </li>
+              <li>
+                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                  Primary Care
+                </Link>
+              </li>
+              <li>
+                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                  Specialist Consultations
+                </Link>
+              </li>
+              <li>
+                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                  Laboratory Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                  Radiology & Imaging
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Patient Resources */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-2">
+              <FaUser className="w-5 h-5 text-rose-500" />
+              <h3 className="text-lg font-semibold">Patient Resources</h3>
+            </div>
+            <ul className="grid grid-cols-1 gap-3">
+              <li>
+                <Link href="/auth" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                  Patient Portal
+                </Link>
+              </li>
+              <li>
+                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                  Find a Doctor
+                </Link>
+              </li>
+              <li>
+                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                  Medical Records
+                </Link>
+              </li>
+              <li>
+                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                  Insurance Information
+                </Link>
+              </li>
+              <li>
+                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
+                  Patient Education
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact & Hours */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-2">
+              <FaFirstAid className="w-5 h-5 text-rose-500" />
+              <h3 className="text-lg font-semibold">Contact & Hours</h3>
+            </div>
+            <ul className="space-y-4">
+              <li className="flex gap-3 text-sm text-muted-foreground">
+                <FaMapMarkerAlt className="w-5 h-5 text-rose-500 shrink-0" />
+                <span>
+                  123 Healthcare Avenue<br />
+                  Medical District<br />
+                  MD 12345
+                </span>
+              </li>
+              <li className="flex items-center gap-3 text-sm text-muted-foreground">
+                <FaPhone className="w-5 h-5 text-rose-500" />
+                <a href="tel:+1-800-MED-HELP" className="hover:text-rose-500 transition-colors duration-200">
+                  1-800-MED-HELP
+                </a>
+              </li>
+              <li className="flex items-center gap-3 text-sm text-muted-foreground">
+                <FaEnvelope className="w-5 h-5 text-rose-500" />
+                <a href="mailto:care@mediconnect.com" className="hover:text-rose-500 transition-colors duration-200">
+                  care@mediconnect.com
+                </a>
+              </li>
+              <li className="flex items-center gap-3 text-sm text-muted-foreground">
+                <FaCalendarAlt className="w-5 h-5 text-rose-500" />
+                <div>
+                  <p>Mon-Fri: 8:00 AM - 8:00 PM</p>
+                  <p>Sat-Sun: 9:00 AM - 5:00 PM</p>
+                  <p className="text-rose-500 font-semibold">Emergency: 24/7</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="mt-12 pt-8 border-t border-muted/20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+            <p className="text-sm text-muted-foreground text-center md:text-left">
+              © {new Date().getFullYear()} MediConnect. All rights reserved.
+            </p>
+            <div className="flex flex-wrap justify-center md:justify-end gap-6">
+              <Link href="/privacy" className="text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                Terms of Service
+              </Link>
+              <Link href="/accessibility" className="text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                Accessibility
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
