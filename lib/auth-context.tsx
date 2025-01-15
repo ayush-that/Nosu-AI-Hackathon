@@ -98,22 +98,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   async function signUp(email: string, password: string, name: string) {
     try {
-      const { data: authData, error: authError } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          data: {
+            full_name: name,
+          },
+        },
       });
 
-      if (authError) throw authError;
+      if (error) throw error;
 
-      if (authData.user) {
-        const { error: profileError } = await supabase.from("profiles").upsert({
-          id: authData.user.id,
-          email: email,
-          full_name: name,
-          updated_at: new Date().toISOString(),
-        });
-
-        if (profileError) throw profileError;
+      // Automatically sign in after signup
+      if (data.user) {
+        await signIn(email, password);
       }
     } catch (error) {
       console.error("Error signing up:", error);

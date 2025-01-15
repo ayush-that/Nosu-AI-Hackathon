@@ -41,24 +41,35 @@ export function AuthForm() {
       if (isSignUp) {
         await signUp(email, password, name);
         toast({
-          title: "Check your email",
-          description:
-            "We sent you a confirmation link to verify your account.",
+          title: "Account created",
+          description: "You have been automatically signed in.",
           duration: 5000,
         });
-        // Reset form after successful signup
-        setEmail("");
-        setPassword("");
-        setName("");
-        setIsSignUp(false);
       } else {
         await signIn(email, password);
+        toast({
+          title: "Welcome back!",
+          description: "You have been successfully signed in.",
+          duration: 3000,
+        });
       }
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
+        toast({
+          title: "Error",
+          description: error.message,
+          variant: "destructive",
+          duration: 5000,
+        });
       } else {
         setError("An error occurred");
+        toast({
+          title: "Error",
+          description: "An unexpected error occurred",
+          variant: "destructive",
+          duration: 5000,
+        });
       }
     } finally {
       setLoading(false);
