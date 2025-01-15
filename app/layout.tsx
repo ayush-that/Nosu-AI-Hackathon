@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/lib/auth-context";
 import { Toaster } from "@/components/ui/toaster";
-
+import MyStatsig from "@/lib/my-statsig";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -26,8 +26,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AuthProvider>{children}</AuthProvider>
-          <Toaster />
+          <MyStatsig>
+            <AuthProvider>{children}</AuthProvider>
+            <Toaster />
+          </MyStatsig>
         </ThemeProvider>
       </body>
       
