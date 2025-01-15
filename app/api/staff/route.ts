@@ -11,14 +11,9 @@ export async function POST(request: Request) {
     }
 
     // Get user by email using auth admin API
-    const {
-      data: { users },
-      error: userError,
-    } = await supabase.auth.admin.listUsers({
-      filter: {
-        email: email,
-      },
-    });
+    const { data, error: userError } = await supabase.auth.admin.listUsers();
+
+    const users = data.users.filter((user) => user.email === email);
 
     if (userError || !users?.length) {
       console.error("Error finding user:", userError);
