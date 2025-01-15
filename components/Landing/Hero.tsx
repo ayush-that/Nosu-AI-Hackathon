@@ -6,7 +6,6 @@ import { MoveRight, PhoneCall, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SearchForm } from "../search-form";
 
-
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
   const titles = useMemo(
@@ -37,7 +36,7 @@ function Hero() {
         <div className="flex gap-8 py-20 lg:py-32 items-center justify-center flex-col text-center">
           <div>
             <Button variant="secondary" size="sm" className="gap-2">
-              Find hospitala near you <Search className="w-4 h-4" />
+              Find hospitals near you <Search className="w-4 h-4" />
             </Button>
           </div>
           <div className="flex gap-6 flex-col items-center">
@@ -77,8 +76,6 @@ function Hero() {
               with medical pros—your well-being, at your fingertips.
             </p>
           </div>
-          
-          
         </div>
       </div>
     </div>

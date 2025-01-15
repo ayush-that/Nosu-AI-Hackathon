@@ -76,7 +76,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-background/80 backdrop-blur-sm">
+    <header className="fixed inset-x-0 top-0 z-50 ">
       <nav className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-4">
@@ -180,16 +180,25 @@ export default function Header() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="container lg:hidden">
-          <div className="fixed inset-x-0 top-16 bottom-0 bg-background/80 backdrop-blur-sm">
+        
+          <div
+            className="fixed inset-x-0 top-16 bottom-0"
+            style={{ backgroundColor: "black" }}
+          >
             <div className="border-t">
               <div className="grid divide-y px-4">
+                <div className="text-center p-4 text-white">
+                  <h2 className="text-lg font-bold">
+                    Your health journey begins with
+                  </h2>
+                  <h3 className="text-xl font-semibold">24/7 support</h3>
+                </div>
                 {navigationItems.map((item) => (
                   <div key={item.title} className="py-3">
                     {item.href ? (
                       <Link
                         href={item.href}
-                        className="flex items-center justify-between py-1.5 text-sm font-medium"
+                        className="flex items-center justify-between py-1.5 text-sm font-medium text-white"
                         onClick={() => setOpen(false)} // Close menu on navigation
                       >
                         {item.title}
@@ -197,7 +206,9 @@ export default function Header() {
                       </Link>
                     ) : (
                       <div className="space-y-2">
-                        <div className="font-medium text-sm">{item.title}</div>
+                        <div className="font-medium text-sm text-white">
+                          {item.title}
+                        </div>
                         <div className="grid gap-1 pl-3">
                           {item.items?.map((subItem) => (
                             <Link
@@ -233,7 +244,7 @@ export default function Header() {
               </div>
             </div>
           </div>
-        </div>
+        
       )}
     </header>
   );

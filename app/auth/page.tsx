@@ -119,10 +119,7 @@ export default function Home() {
   const [showDirectChat, setShowDirectChat] = useState(false);
   const [pendingQuestion, setPendingQuestion] = useState<string>("");
 
-  // Add button to go to home
-  
-  const goToAdmin = () => router.push("/admin");
-
+ 
   useEffect(() => {
     if (scrollAreaRef.current) {
       scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
@@ -341,18 +338,7 @@ export default function Home() {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen p-4">
         <div className="w-full max-w-sm space-y-6">
-          <div className="flex flex-col items-center space-y-2">
-            <div className="flex gap-4">
-              
-              <Button
-                onClick={goToAdmin}
-                variant="ghost"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                Admin →
-              </Button>
-            </div>
-          </div>
+          
           <AuthForm />
         </div>
       </div>
