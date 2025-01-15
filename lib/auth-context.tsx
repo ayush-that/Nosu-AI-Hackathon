@@ -5,11 +5,20 @@ import { User } from "@supabase/supabase-js";
 import { supabase } from "./supabase";
 import { Profile } from "./supabase";
 
+type SignUpResponse = {
+  data: { user: User | null } | null;
+  error: Error | null;
+};
+
 type AuthContextType = {
   user: User | null;
   profile: Profile | null;
   signIn: (email: string, password: string) => Promise<void>;
-  signUp: (email: string, password: string, name: string) => Promise<void>;
+  signUp: (
+    email: string,
+    password: string,
+    name: string
+  ) => Promise<SignUpResponse>;
   signOut: () => Promise<void>;
   loading: boolean;
 };
@@ -96,7 +105,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
-  async function signUp(email: string, password: string, name: string) {
+  async function signUp(
+    email: string,
+    password: string,
+    name: string
+  ): Promise<SignUpResponse> {
     try {
       const { data, error } = await supabase.auth.signUp({
         email,
@@ -108,9 +121,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         },
       });
 
-      if (error) throw error;
+      if (error) {
+        return { data: null, error: error };
+      }
 
-      return { data, error: null };
+      return { data: { user: data.user }, error: null };
     } catch (error) {
       console.error("Error signing up:", error);
       return {
