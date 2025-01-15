@@ -1,12 +1,9 @@
 import Header from "@/components/Landing/header";
 import { Hero } from "@/components/Landing/Hero";
-import { Outfit } from "next/font/google";
 import Feature from "@/components/Landing/Feature";
 import Footer from "@/components/Landing/Footer";
 import { Testimonials } from "@/components/Landing/Testinomial";
 import CTA from "@/components/Landing/CTA";
-
-const outfit = Outfit({ subsets: ["latin"] });
 
 export default function LandingPage() {
   return (

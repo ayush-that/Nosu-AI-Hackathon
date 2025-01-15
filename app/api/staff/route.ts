@@ -12,7 +12,7 @@ export async function POST(request: Request) {
 
     // Get user by email using auth admin API
     const {
-      data: { user: userData },
+      data: { users },
       error: userError,
     } = await supabase.auth.admin.listUsers({
       filter: {
@@ -20,12 +20,12 @@ export async function POST(request: Request) {
       },
     });
 
-    if (userError || !userData?.length) {
+    if (userError || !users?.length) {
       console.error("Error finding user:", userError);
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    const user = userData[0];
+    const user = users[0];
     console.log("Found user:", user.id);
 
     // Add user to staff_members
