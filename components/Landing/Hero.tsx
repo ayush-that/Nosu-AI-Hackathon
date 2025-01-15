@@ -33,7 +33,7 @@ function Hero() {
   return (
     <div className="w-full min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-background/80">
       <div className="container mx-auto max-w-[1200px] px-4 flex items-center justify-center">
-        <div className="flex gap-8 py-20 lg:py-32 items-center justify-center flex-col text-center">
+        <div className="flex gap-8 py-12 lg:py-32 items-center justify-center flex-col text-center">
           <div>
             <Button variant="secondary" size="sm" className="gap-2">
               Find hospitals near you <Search className="w-4 h-4" />

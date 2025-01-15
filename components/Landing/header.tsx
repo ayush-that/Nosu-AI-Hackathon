@@ -76,11 +76,11 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 ">
-      <nav className="container flex h-16 items-center justify-between">
+    <header className="fixed inset-x-0 top-0 z-50 backdrop-blur-md bg-background/60 border-b border-border/40">
+      <nav className="container mx-auto max-w-7xl flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-rose-600 flex items-center justify-center shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-rose-600 flex items-center justify-center shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:rotate-3">
             <Heart className="w-6 h-6 text-white" fill="white" />
           </div>
           <Link
@@ -92,19 +92,19 @@ export default function Header() {
         </div>
 
         {/* Desktop Navigation */}
-        <NavigationMenu className="hidden lg:flex">
+        <NavigationMenu className="hidden lg:flex justify-center">
           <NavigationMenuList className="gap-1">
             {navigationItems.map((item) => (
               <NavigationMenuItem key={item.title}>
                 {item.href ? (
                   <Link href={item.href} legacyBehavior passHref>
-                    <NavigationMenuLink className="inline-flex h-9 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-colors hover:text-accent-foreground">
+                    <NavigationMenuLink className="inline-flex h-9 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-colors hover:bg-rose-500/10 hover:text-rose-600 dark:hover:text-rose-400 rounded-md">
                       {item.title}
                     </NavigationMenuLink>
                   </Link>
                 ) : (
                   <>
-                    <NavigationMenuTrigger className="h-9">
+                    <NavigationMenuTrigger className="h-9 hover:bg-rose-500/10 hover:text-rose-600 dark:hover:text-rose-400 data-[state=open]:bg-rose-500/10 data-[state=open]:text-rose-600 dark:data-[state=open]:text-rose-400">
                       {item.title}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
@@ -125,7 +125,7 @@ export default function Header() {
                               legacyBehavior
                               passHref
                             >
-                              <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                              <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-rose-500/10 hover:text-rose-600 dark:hover:text-rose-400 focus:bg-rose-500/10 focus:text-rose-600 dark:focus:text-rose-400">
                                 <div className="flex items-center justify-between">
                                   <span className="text-sm font-medium">
                                     {subItem.title}
@@ -179,11 +179,7 @@ export default function Header() {
       </nav>
 
       {/* Mobile menu */}
-      {isOpen && (
-        
-          <div
-            className="fixed inset-x-0 top-16 bottom-0"
-            style={{ backgroundColor: "black" }}
+      {isOpen && (          <div className="fixed inset-x-0 top-16 bottom-0 bg-background/95 backdrop-blur-md"
           >
             <div className="border-t">
               <div className="grid divide-y px-4">
