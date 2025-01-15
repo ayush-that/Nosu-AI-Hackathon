@@ -3,7 +3,7 @@
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, MapPin } from "lucide-react";
+import { MessageSquare, MapPin, Hospital } from "lucide-react";
 import {
   getPincodeCoordinates,
   getHospitalsNearby,
@@ -87,7 +87,7 @@ function HospitalsContent() {
   }, [searchParams, router]);
 
   const handleChatClick = (hospitalId: string) => {
-    router.push(`/chat?hospital=${hospitalId}`);
+    router.push(`/auth?hospital=${hospitalId}`);
   };
 
   if (loading) {
@@ -101,7 +101,7 @@ function HospitalsContent() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 md:p-0 p-4 ">
       {hospitals.map((hospital) => (
         <div
           key={hospital.id}
@@ -140,11 +140,17 @@ function HospitalsContent() {
 
 export default function HospitalsPage() {
   return (
-    <div className="container max-w-3xl py-8">
-      <h1 className="text-2xl font-bold mb-6">Nearby Hospitals</h1>
+    <div className="container max-w-3xl py-8 justify-center items-center  mx-auto flex flex-col min-h-screen">
+      <div className="md:flex md:flex-row items-center mb-6 gap-3 flex-col flex ">
+        <h1 className=" text-3xl md:text-4xl font-bold  font-serif">
+          Nearby Hospitals
+        </h1>
+        <Hospital className="w-8 h-8 text-red-400 animate-pulse" />
+      </div>
+
       <Suspense
         fallback={
-          <div className="space-y-4">
+          <div className="space-y-4 ">
             <HospitalSkeleton />
             <HospitalSkeleton />
             <HospitalSkeleton />

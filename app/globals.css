@@ -116,3 +116,19 @@ body {
 .scale-100 {
   transition: all var(--theme-transition-duration) ease;
 }
+
+/* Header blur and background transitions */
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Improved header transitions */
+header {
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
