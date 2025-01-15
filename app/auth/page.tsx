@@ -103,7 +103,6 @@ const Navbar = ({ position, input = "", setInput, isLoading }: NavbarProps) => (
   </nav>
 );
 
-
 export default function Home() {
   const { user, profile, loading } = useAuth();
   const router = useRouter();
@@ -119,7 +118,6 @@ export default function Home() {
   const [showDirectChat, setShowDirectChat] = useState(false);
   const [pendingQuestion, setPendingQuestion] = useState<string>("");
 
- 
   useEffect(() => {
     if (scrollAreaRef.current) {
       scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
@@ -338,7 +336,6 @@ export default function Home() {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen p-4">
         <div className="w-full max-w-sm space-y-6">
-          
           <AuthForm />
         </div>
       </div>
@@ -426,7 +423,17 @@ export default function Home() {
                                   />
                                 </div>
                               ),
-                              code: ({ node, inline, ...props }) =>
+                              code: ({
+                                node,
+                                inline,
+                                className,
+                                ...props
+                              }: {
+                                node?: any;
+                                inline?: boolean;
+                                className?: string;
+                                [key: string]: any;
+                              }) =>
                                 inline ? (
                                   <code
                                     className="rounded bg-background/50 px-1 py-0.5 font-mono text-sm"
