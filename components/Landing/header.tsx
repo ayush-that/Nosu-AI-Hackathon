@@ -76,7 +76,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 backdrop-blur-md bg-background/60 border-b border-border/40">
+    <header className="fixed inset-x-0 top-0 z-[999] bg-background/60 border-b border-border/40">
       <nav className="container mx-auto max-w-7xl flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <div className="flex items-center gap-4">
@@ -180,38 +180,40 @@ export default function Header() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="fixed inset-x-0 top-16 bottom-0 z-[100] bg-black/60 backdrop-blur-md">
-          <div className="relative bg-background/95 border-t h-full">
-            <div className="grid divide-y divide-border/40 px-4">
-              <div className="text-center p-4">
-                <h2 className="text-lg font-bold text-foreground">
+        <div className="fixed inset-x-0 top-16 bottom-0 z-[99] bg-background/95 overflow-y-auto">
+          <div className="relative bg-background/95 border-t min-h-full">
+            <div className="grid divide-y divide-border/40">
+              <div className="text-center p-6 space-y-1">
+                <h2 className="text-lg font-medium text-foreground">
                   Your health journey begins with
                 </h2>
-                <h3 className="text-xl font-semibold text-foreground">24/7 support</h3>
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-rose-500 to-rose-600 bg-clip-text text-transparent">
+                  24/7 support
+                </h3>
               </div>
               {navigationItems.map((item) => (
-                <div key={item.title} className="py-3">
+                <div key={item.title} className="p-4">
                   {item.href ? (
                     <Link
                       href={item.href}
-                      className="flex items-center justify-between py-1.5 text-sm font-medium text-white"
-                      onClick={() => setOpen(false)} // Close menu on navigation
+                      className="flex items-center justify-between py-2 text-base font-medium text-foreground hover:text-rose-500"
+                      onClick={() => setOpen(false)}
                     >
                       {item.title}
                       <MoveRight className="h-4 w-4" />
                     </Link>
                   ) : (
-                    <div className="space-y-2">
-                      <div className="font-medium text-sm text-white">
+                    <div className="space-y-3">
+                      <div className="font-medium text-base text-foreground">
                         {item.title}
                       </div>
-                      <div className="grid gap-1 pl-3">
+                      <div className="grid gap-2 pl-4">
                         {item.items?.map((subItem) => (
                           <Link
                             key={subItem.title}
                             href={subItem.href}
-                            className="flex items-center justify-between py-1.5 text-sm text-muted-foreground hover:text-foreground"
-                            onClick={() => setOpen(false)} // Close menu on navigation
+                            className="flex items-center justify-between py-2 text-sm text-muted-foreground hover:text-rose-500"
+                            onClick={() => setOpen(false)}
                           >
                             {subItem.title}
                             <MoveRight className="h-4 w-4" />
@@ -222,16 +224,16 @@ export default function Header() {
                   )}
                 </div>
               ))}
-              <div className="grid gap-2 p-4">
+              <div className="grid gap-3 p-4">
                 <Button
                   variant="ghost"
-                  className="w-full justify-start"
-                  onClick={handlePatientLoginMobile} // Use the new handler
+                  className="w-full justify-center text-base"
+                  onClick={handlePatientLoginMobile}
                 >
                   Patient Login
                 </Button>
                 <Button
-                  className="w-full justify-start"
+                  className="w-full justify-center bg-rose-500 hover:bg-rose-600 text-white text-base"
                   onClick={() => router.push("/auth")}
                 >
                   Find Care
