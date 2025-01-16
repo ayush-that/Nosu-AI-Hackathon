@@ -1,5 +1,19 @@
 import React from "react";
-import { FaHeart, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaStethoscope, FaFirstAid, FaUser, FaCalendarAlt } from "react-icons/fa";
+import {
+  FaHeart,
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedinIn,
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaClock,
+  FaStethoscope,
+  FaFirstAid,
+  FaUser,
+  FaCalendarAlt,
+} from "react-icons/fa";
 import Link from "next/link";
 
 function Footer() {
@@ -11,15 +25,19 @@ function Footer() {
           <div className="flex flex-col sm:flex-row justify-between items-center text-white">
             <div className="flex items-center gap-2">
               <FaPhone className="h-4 w-4 animate-pulse" />
-              <span className="text-sm font-semibold">24/7 Emergency: 1-800-MED-HELP</span>
+              <span className="text-sm font-semibold">
+                24/7 Emergency: 1-800-MED-HELP
+              </span>
             </div>
-            <span className="text-sm hidden sm:block">Always Available for Your Care</span>
+            <span className="text-sm hidden sm:block">
+              Always Available for Your Care
+            </span>
           </div>
         </div>
       </div>
 
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="w-full px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand Section */}
           <div className="space-y-6">
@@ -31,26 +49,41 @@ function Footer() {
                 <span className="text-xl font-bold bg-gradient-to-r from-rose-500 to-rose-600 bg-clip-text text-transparent">
                   MediConnect
                 </span>
-                <span className="text-xs text-muted-foreground">Healthcare Excellence</span>
+                <span className="text-xs text-muted-foreground">
+                  Healthcare Excellence
+                </span>
               </div>
             </div>
-            
+
             <p className="text-sm text-muted-foreground">
-              Your trusted partner in healthcare, providing comprehensive medical services
-              with cutting-edge technology and compassionate care.
+              Your trusted partner in healthcare, providing comprehensive
+              medical services with cutting-edge technology and compassionate
+              care.
             </p>
 
             <div className="flex items-center gap-4">
-              <a href="#" className="text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+              >
                 <FaFacebookF className="w-5 h-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+              >
                 <FaTwitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+              >
                 <FaInstagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+              >
                 <FaLinkedinIn className="w-5 h-5" />
               </a>
             </div>
@@ -64,31 +97,46 @@ function Footer() {
             </div>
             <ul className="grid grid-cols-1 gap-3">
               <li>
-                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                <Link
+                  href="/soon"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+                >
                   <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
                   Emergency Care
                 </Link>
               </li>
               <li>
-                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                <Link
+                  href="/soon"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+                >
                   <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
                   Primary Care
                 </Link>
               </li>
               <li>
-                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                <Link
+                  href="/soon"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+                >
                   <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
                   Specialist Consultations
                 </Link>
               </li>
               <li>
-                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                <Link
+                  href="/soon"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+                >
                   <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
                   Laboratory Services
                 </Link>
               </li>
               <li>
-                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                <Link
+                  href="/soon"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+                >
                   <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
                   Radiology & Imaging
                 </Link>
@@ -104,31 +152,46 @@ function Footer() {
             </div>
             <ul className="grid grid-cols-1 gap-3">
               <li>
-                <Link href="/auth" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                <Link
+                  href="/auth"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+                >
                   <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
                   Patient Portal
                 </Link>
               </li>
               <li>
-                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                <Link
+                  href="/soon"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+                >
                   <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
                   Find a Doctor
                 </Link>
               </li>
               <li>
-                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                <Link
+                  href="/soon"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+                >
                   <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
                   Medical Records
                 </Link>
               </li>
               <li>
-                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                <Link
+                  href="/soon"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+                >
                   <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
                   Insurance Information
                 </Link>
               </li>
               <li>
-                <Link href="/soon" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+                <Link
+                  href="/soon"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+                >
                   <div className="w-1.5 h-1.5 rounded-full bg-rose-500"></div>
                   Patient Education
                 </Link>
@@ -146,20 +209,28 @@ function Footer() {
               <li className="flex gap-3 text-sm text-muted-foreground">
                 <FaMapMarkerAlt className="w-5 h-5 text-rose-500 shrink-0" />
                 <span>
-                  123 Healthcare Avenue<br />
-                  Medical District<br />
+                  123 Healthcare Avenue
+                  <br />
+                  Medical District
+                  <br />
                   MD 12345
                 </span>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <FaPhone className="w-5 h-5 text-rose-500" />
-                <a href="tel:+1-800-MED-HELP" className="hover:text-rose-500 transition-colors duration-200">
+                <a
+                  href="tel:+1-800-MED-HELP"
+                  className="hover:text-rose-500 transition-colors duration-200"
+                >
                   1-800-MED-HELP
                 </a>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <FaEnvelope className="w-5 h-5 text-rose-500" />
-                <a href="mailto:care@mediconnect.com" className="hover:text-rose-500 transition-colors duration-200">
+                <a
+                  href="mailto:care@mediconnect.com"
+                  className="hover:text-rose-500 transition-colors duration-200"
+                >
                   care@mediconnect.com
                 </a>
               </li>
@@ -182,13 +253,22 @@ function Footer() {
               © {new Date().getFullYear()} MediConnect. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center md:justify-end gap-6">
-              <Link href="/privacy" className="text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+              <Link
+                href="/privacy"
+                className="text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+              >
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+              <Link
+                href="/terms"
+                className="text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+              >
                 Terms of Service
               </Link>
-              <Link href="/accessibility" className="text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200">
+              <Link
+                href="/accessibility"
+                className="text-sm text-muted-foreground hover:text-rose-500 transition-colors duration-200"
+              >
                 Accessibility
               </Link>
             </div>
