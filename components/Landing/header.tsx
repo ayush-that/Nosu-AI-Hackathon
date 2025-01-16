@@ -16,6 +16,9 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { useRouter } from "next/navigation";
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+
   const navigationItems = [
     {
       title: "Home",
@@ -56,193 +59,141 @@ export default function Header() {
           href: "/soon",
         },
         {
-          title: "Support",
-          href: "/soon",
-        },
-        {
-          title: "Contact",
+          title: "Patient Education",
           href: "/soon",
         },
       ],
     },
   ];
 
-  const [isOpen, setOpen] = useState(false);
-  const router = useRouter();
-
-  const handlePatientLoginMobile = () => {
-    setOpen(false); // Close the mobile menu
-    router.push("/auth");
-  };
-
   return (
-    <header className="fixed inset-x-0 top-0 z-[999] bg-background/60 border-b border-border/40">
-      <nav className="container mx-auto max-w-7xl flex h-16 items-center justify-between px-4">
-        {/* Logo */}
-        <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-rose-600 flex items-center justify-center shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 hover:rotate-3">
-            <Heart className="w-6 h-6 text-white" fill="white" />
-          </div>
-          <Link
-            href="/"
-            className="text-lg font-bold bg-gradient-to-r from-rose-500 to-rose-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
-          >
-            MediConnect
+    <header className="fixed top-0 left-0 right-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container mx-auto px-4">
+        <nav className="flex h-16 items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center space-x-2">
+            <Heart className="h-6 w-6 text-red-500" />
+            <span className="text-xl font-bold">MediConnect</span>
           </Link>
-        </div>
 
-        {/* Desktop Navigation */}
-        <NavigationMenu className="hidden lg:flex justify-center">
-          <NavigationMenuList className="gap-1">
-            {navigationItems.map((item) => (
-              <NavigationMenuItem key={item.title}>
-                {item.href ? (
-                  <Link href={item.href} legacyBehavior passHref>
-                    <NavigationMenuLink className="inline-flex h-9 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-colors hover:bg-rose-500/10 hover:text-rose-600 dark:hover:text-rose-400 rounded-md">
-                      {item.title}
-                    </NavigationMenuLink>
-                  </Link>
-                ) : (
-                  <>
-                    <NavigationMenuTrigger className="h-9 hover:bg-rose-500/10 hover:text-rose-600 dark:hover:text-rose-400 data-[state=open]:bg-rose-500/10 data-[state=open]:text-rose-600 dark:data-[state=open]:text-rose-400">
-                      {item.title}
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
-                        <div className="space-y-2">
-                          <h4 className="font-medium leading-none">
-                            {item.title}
-                          </h4>
-                          <p className="text-sm text-muted-foreground">
-                            {item.description}
-                          </p>
-                        </div>
-                        <div className="grid gap-1">
-                          {item.items?.map((subItem) => (
-                            <Link
-                              key={subItem.title}
-                              href={subItem.href}
-                              legacyBehavior
-                              passHref
-                            >
-                              <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-rose-500/10 hover:text-rose-600 dark:hover:text-rose-400 focus:bg-rose-500/10 focus:text-rose-600 dark:focus:text-rose-400">
-                                <div className="flex items-center justify-between">
-                                  <span className="text-sm font-medium">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex md:items-center md:space-x-6">
+            <NavigationMenu>
+              <NavigationMenuList>
+                {navigationItems.map((item) => (
+                  <NavigationMenuItem key={item.title}>
+                    {item.items ? (
+                      <>
+                        <NavigationMenuTrigger>
+                          {item.title}
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                          <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                            {item.items.map((subItem) => (
+                              <li key={subItem.title}>
+                                <Link
+                                  href={subItem.href}
+                                  className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                >
+                                  <div className="text-sm font-medium leading-none">
                                     {subItem.title}
-                                  </span>
-                                  <MoveRight className="h-4 w-4" />
-                                </div>
-                              </NavigationMenuLink>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </NavigationMenuContent>
-                  </>
-                )}
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+                                  </div>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </NavigationMenuContent>
+                      </>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+                      >
+                        {item.title}
+                      </Link>
+                    )}
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
 
-        {/* Right side buttons */}
-        <div className="flex items-center gap-3">
-          <ThemeToggle />
-          <div className="hidden md:flex items-center gap-3">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="hover:bg-transparent hover:text-accent-foreground"
-              onClick={() => router.push("/auth")} // Desktop login
-            >
-              Patient Login
-            </Button>
-            <Button
-              size="sm"
-              className="bg-rose-500 hover:bg-rose-600 text-white"
-              onClick={() => router.push("/auth")}
-            >
-              Find Care
-            </Button>
+            <div className="flex items-center space-x-4">
+              <ThemeToggle />
+              <Button variant="ghost" onClick={() => router.push("/auth")}>
+                Patient Login
+              </Button>
+              <Button onClick={() => router.push("/auth")}>
+                Find Care
+                <MoveRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
           </div>
 
-          {/* Mobile menu button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden hover:bg-transparent"
-            onClick={() => setOpen(!isOpen)}
-          >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
-        </div>
-      </nav>
+          {/* Mobile Navigation Toggle */}
+          <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </nav>
 
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="fixed inset-x-0 top-16 bottom-0 z-[99] bg-background/95 overflow-y-auto">
-          <div className="relative bg-background/95 border-t min-h-full">
-            <div className="grid divide-y divide-border/40">
-              <div className="text-center p-6 space-y-1">
-                <h2 className="text-lg font-medium text-foreground">
-                  Your health journey begins with
-                </h2>
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-rose-500 to-rose-600 bg-clip-text text-transparent">
-                  24/7 support
-                </h3>
-              </div>
+        {/* Mobile Navigation Menu */}
+        {isOpen && (
+          <div className="md:hidden">
+            <div className="space-y-4 px-4 pb-4 pt-2">
               {navigationItems.map((item) => (
-                <div key={item.title} className="p-4">
-                  {item.href ? (
-                    <Link
-                      href={item.href}
-                      className="flex items-center justify-between py-2 text-base font-medium text-foreground hover:text-rose-500"
-                      onClick={() => setOpen(false)}
-                    >
-                      {item.title}
-                      <MoveRight className="h-4 w-4" />
-                    </Link>
-                  ) : (
-                    <div className="space-y-3">
-                      <div className="font-medium text-base text-foreground">
-                        {item.title}
-                      </div>
-                      <div className="grid gap-2 pl-4">
-                        {item.items?.map((subItem) => (
+                <div key={item.title} className="space-y-2">
+                  {item.items ? (
+                    <>
+                      <div className="font-medium">{item.title}</div>
+                      <div className="ml-4 space-y-2">
+                        {item.items.map((subItem) => (
                           <Link
                             key={subItem.title}
                             href={subItem.href}
-                            className="flex items-center justify-between py-2 text-sm text-muted-foreground hover:text-rose-500"
-                            onClick={() => setOpen(false)}
+                            className="block text-sm text-muted-foreground hover:text-foreground"
+                            onClick={() => setIsOpen(false)}
                           >
                             {subItem.title}
-                            <MoveRight className="h-4 w-4" />
                           </Link>
                         ))}
                       </div>
-                    </div>
+                    </>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="block font-medium hover:text-foreground"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.title}
+                    </Link>
                   )}
                 </div>
               ))}
-              <div className="grid gap-3 p-4">
+              <div className="space-y-2 border-t pt-4">
                 <Button
                   variant="ghost"
-                  className="w-full justify-center text-base"
-                  onClick={handlePatientLoginMobile}
+                  className="w-full justify-start"
+                  onClick={() => {
+                    router.push("/auth");
+                    setIsOpen(false);
+                  }}
                 >
                   Patient Login
                 </Button>
                 <Button
-                  className="w-full justify-center bg-rose-500 hover:bg-rose-600 text-white text-base"
-                  onClick={() => router.push("/auth")}
+                  className="w-full justify-start"
+                  onClick={() => {
+                    router.push("/auth");
+                    setIsOpen(false);
+                  }}
                 >
                   Find Care
+                  <MoveRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </header>
   );
 }
