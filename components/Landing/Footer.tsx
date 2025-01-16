@@ -25,7 +25,7 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500 to-rose-600 flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-rose-500 to-rose-600 flex items-center justify-center shadow-lg">
                 <FaHeart className="w-7 h-7 text-white" />
               </div>
               <div className="flex flex-col">

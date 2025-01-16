@@ -14,6 +14,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useRouter } from "next/navigation";
+import { FaHeart } from "react-icons/fa";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,7 +72,9 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <nav className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <Heart className="h-6 w-6 text-red-500" />
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-rose-500 to-rose-600 flex items-center justify-center shadow-lg">
+              <FaHeart className="w-7 h-7 text-white" />
+            </div>
             <span className="text-xl font-bold">MediConnect</span>
           </Link>
 
