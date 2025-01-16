@@ -344,7 +344,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col h-screen overflow-hidden">
-      <main className="flex-1 container max-w-3xl mx-auto overflow-hidden">
+      <main className="flex-1 container max-w-3xl mx-auto overflow-hidden mt-2">
         <ScrollArea className="h-[calc(100vh-7rem)] px-6">
           <div className="py-2 space-y-2">
             {messages.map((message, index) => (

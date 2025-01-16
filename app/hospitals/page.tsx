@@ -142,7 +142,7 @@ export default function HospitalsPage() {
   return (
     <div className="container max-w-3xl py-8 justify-center items-center  mx-auto flex flex-col min-h-screen">
       <div className="md:flex md:flex-row items-center mb-6 gap-3 flex-col flex ">
-        <h1 className=" text-3xl md:text-4xl font-bold  font-serif">
+        <h1 className=" text-3xl md:text-4xl font-bold">
           Nearby Hospitals
         </h1>
         <Hospital className="w-8 h-8 text-red-400 animate-pulse" />
