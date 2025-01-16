@@ -74,8 +74,10 @@ export default function Hero() {
               </span>
             </h1>
             <SearchForm />
-            <p className="text-sm md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center mx-auto">
-              <span className="font-bold text-white italic">MediConnect</span>{" "}
+            <p className="text-sm md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center mx-auto dark:text-gray-300">
+              <span className="font-bold text-black italic dark:text-white">
+                MediConnect
+              </span>{" "}
               reimagines healthcare with instant access to hospitals, AI-powered
               health assistance, and direct communication with medical pros—your
               well-being, at your fingertips.
