@@ -16,26 +16,9 @@ import {
 } from "react-icons/fa";
 import Link from "next/link";
 
-function Footer() {
+export default function Footer() {
   return (
     <footer className="w-full bg-background/80 border-t border-muted/20">
-      {/* Emergency Banner */}
-      <div className="w-full bg-rose-500 py-2">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col sm:flex-row justify-between items-center text-white">
-            <div className="flex items-center gap-2">
-              <FaPhone className="h-4 w-4 animate-pulse" />
-              <span className="text-sm font-semibold">
-                24/7 Emergency: 1-800-MED-HELP
-              </span>
-            </div>
-            <span className="text-sm hidden sm:block">
-              Always Available for Your Care
-            </span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer Content */}
       <div className="w-full px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
@@ -275,8 +258,24 @@ function Footer() {
           </div>
         </div>
       </div>
+      {/* Emergency Banner */}
+      <div className="w-full bg-rose-500 py-2">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center text-white">
+            <div className="flex items-center gap-2">
+              <FaPhone className="h-4 w-4 animate-pulse" />
+              <span className="text-sm font-semibold">
+                24/7 Emergency: 1-800-MED-HELP
+              </span>
+            </div>
+            <span className="text-sm hidden sm:block">
+              Always Available for Your Care
+            </span>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }
 
-export default Footer;
+

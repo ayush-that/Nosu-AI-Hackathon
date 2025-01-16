@@ -70,13 +70,11 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
         <nav className="flex h-16 items-center justify-between">
-          {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <Heart className="h-6 w-6 text-red-500" />
             <span className="text-xl font-bold">MediConnect</span>
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-6">
             <NavigationMenu>
               <NavigationMenuList>
@@ -129,13 +127,18 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Mobile Navigation Toggle */}
-          <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <div className="md:hidden flex items-center space-x-4">
+            <ThemeToggle />
+            <button onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
+          </div>
         </nav>
 
-        {/* Mobile Navigation Menu */}
         {isOpen && (
           <div className="md:hidden">
             <div className="space-y-4 px-4 pb-4 pt-2">

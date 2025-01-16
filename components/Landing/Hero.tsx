@@ -6,7 +6,7 @@ import { MoveRight, PhoneCall, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SearchForm } from "../search-form";
 
-function Hero() {
+export default function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
   const titles = useMemo(
     () => [
@@ -35,10 +35,10 @@ function Hero() {
       <div className="absolute inset-0 bg-dot-black/[0.2] dark:bg-dot-white/[0.2]">
         <div className="absolute inset-0 bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       </div>
-      
-      <div className="container relative z-10 mx-auto max-w-[1200px] px-4 flex items-center justify-center">
+
+      <div className="container relative z-10 mx-auto max-w-[1200px] px-4 flex items-center justify-center =">
         <div className="flex gap-8 py-12 lg:py-10 items-center justify-center flex-col text-center">
-          <div className="mt-10">
+          <div className="mt-10 md:mt-6">
             <Button variant="secondary" size="sm" className="gap-2">
               Find hospitals near you <Search className="w-4 h-4" />
             </Button>
@@ -49,7 +49,7 @@ function Hero() {
                 Your health journey begins with
               </span>
               <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1">
-                &nbsp;
+                 
                 {titles.map((title, index) => (
                   <motion.span
                     key={index}
@@ -75,9 +75,10 @@ function Hero() {
             </h1>
             <SearchForm />
             <p className="text-sm md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center mx-auto">
-              <span className="font-bold text-white italic">MediConnect</span> reimagines healthcare with instant access to
-              hospitals, AI-powered health assistance, and direct communication
-              with medical pros—your well-being, at your fingertips.
+              <span className="font-bold text-white italic">MediConnect</span>{" "}
+              reimagines healthcare with instant access to hospitals, AI-powered
+              health assistance, and direct communication with medical pros—your
+              well-being, at your fingertips.
             </p>
           </div>
         </div>
@@ -86,4 +87,4 @@ function Hero() {
   );
 }
 
-export { Hero };
+
